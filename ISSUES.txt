@@ -1,0 +1,9 @@
+1.
+Issu: ValueError: unichr() arg not in range(0x10000) (narrow Python build)
+Solu: http://wordaligned.org/articles/narrow-python
+
+2.
+Issu: PhantomJS does not return the redirected URL
+Solu: Use Firefox webdriver
+
+3.

@@ -1,0 +1,5 @@
+pip install beautifulsoup
+pip install selenium
+PhantomJS
+Firefox
+Chrome (and its webdriver if Chorme is desired)

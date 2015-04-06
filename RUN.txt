@@ -1,0 +1,159 @@
+# No debug, first match stop, depth default (2)
+python oad.py -f ../test/web4.txt -s > ../log/test444.log
+# Debug, first match stop, depth default (2)
+python oad.py -v -f ../test/web4.txt -s > ../log/test444.log
+# No debug, first match stop, support JavaScript, depth default (2)
+python oad.py -f ../test/web4.txt -s -j > ../log/test444.log
+# Debug, first match stop, support JavaScript, depth 5
+python oad.py -f ../test/web4.txt -d 5 -s -v -j > ../log/test444.log
+# Debug, first match stop, support JavaScript, depth default (2), multi-thread
+python oad.py -f ../test/web7.txt -s -v -j -m > ../log/test7.log
+
+# v.5 running examples
+Daves-MacBook-Pro-2:src daveti$ python oad.py -f ../test/web11.txt -s -m -e
+Info: depth [2], file [../test/web11.txt]
+Info: debug [0], firstStop [1], JavaScript [0]
+Info: multiThread [1], numOfThreads [10]
+Info: webdriver [], earlyPrint [1]
+Info: num of Webs [2]
+Info: [thread#1] index [0] URL [http://www.google.com] done
+Info: [thread#0] index [0] URL [http://ink361.com/] done
+====================
+oad statistics:
+numOfWebs: 2
+numOfUrls: 544
+numofJSs: 0
+numOfOauthUrls: 0
+numOfVulnerableOauthUrls: 0
+numOfVulernableWebs: 0
+Info: done - core running time [187.311390] seconds
+
+Daves-MacBook-Pro-2:src daveti$ python oad.py -f ../test/web11.txt -s -m -e -w phantomjs
+Info: depth [2], file [../test/web11.txt]
+Info: debug [0], firstStop [1], JavaScript [0]
+Info: multiThread [1], numOfThreads [10]
+Info: webdriver [phantomjs], earlyPrint [1]
+Info: num of Webs [2]
+Info: [thread#1] index [0] URL [http://www.google.com] done
+Info: [thread#0] index [0] URL [http://ink361.com/] done
+====================
+oad statistics:
+numOfWebs: 2
+numOfUrls: 591
+numofJSs: 0
+numOfOauthUrls: 0
+numOfVulnerableOauthUrls: 0
+numOfVulernableWebs: 0
+Info: done - core running time [852.246395] seconds
+Daves-MacBook-Pro-2:src daveti$ 
+
+# Web UT with positives
+python oad.py -f ../test/webUT.txt -s -e -m > ../log/webUT.log
+
+# Run with hack option - hsp
+python oad.py -f ../test/webUT.txt -s -e -m -k hsp > ../log/TestLogs/webUT2.log
+
+# Run with hack options - hsp,hus,htr
+Daves-MacBook-Pro-2:src daveti$ python oad.py -f ../test/debug25.txt -s -e -k hsp,hus,htr -v -m
+Info: depth [2], file [../test/debug25.txt]
+Info: debug [1], firstStop [1], JavaScript [0]
+Info: multiThread [1], numOfThreads [10]
+Info: webdriver [], earlyPrint [1]
+Info: hackString [hsp,hus,htr]
+Debug: fixUrlIfNeeded url [http://www.92lux.cn], parentUrl [None]
+Debug: fixUrlIfNeeded url [http://www.5giay.vn], parentUrl [None]
+Debug: num of webs [2]
+Debug: webs:
+['http://www.92lux.cn', 'http://www.5giay.vn']
+Info: num of Webs [2]
+Debug: threadman params
+len(db) [2], threadNum [10], depth [2]
+firstStop [1], supportJS [0], debug [1], driver [], earlyPrint [1]
+('utils: ', <OadUtils.OadUtils instance at 0x10626cab8>)
+Debug: computeNumOfThreads params
+len(db) [2], threadNum [10]
+Debug: numOfThreads [2]
+Debug: mapReduceDB params
+len(db) [2], threadNum [2]
+Debug: entryNum [1], remain [0]
+Debug: numOfSubDBs [2]
+Debug: numOfSubDBs [2]
+Debug: worker params
+ Debug: [thread#1] started
+len(db) [1], depth [2], firstStop [1]
+supportJS [0], debug [1], tid [0], driver [], earlyPrint [1]
+ Debug: worker params
+('utils: 'len(db) [1], depth [2], firstStop [1]
+ Debug: [thread#1] started, supportJS [0], debug [1], tid [1], driver [], earlyPrint [1]
+<OadUtils.OadUtils instance at 0x10626cab8>)
+('utils: '
+('urlDB: ', <UrlDB.UrlDB instance at 0x10626cb90>)
+Info: [thread#0] index [0] URL [http://www.92lux.cn] started
+, <OadUtils.OadUtils instance at 0x10626cab8>)
+Debug: spiderman params
+('urlDB: ', <UrlDB.UrlDB instance at 0x10626cb90>)
+Info: [thread#1] index [0] URL [http://www.5giay.vn] started
+Debug: spiderman params
+root:
+root:depth [0], numOfUrls [0], numOfJSs [0]
+InitURL [http://www.5giay.vn]
+OAuth URLs:
+
+depth [0], numOfUrls [0], numOfJSs [0]
+InitURL [http://www.92lux.cn]
+OAuth URLs:
+[]
+Vulnerable OAuth URLs:
+[]
+Vulnerable OAuth URLs:
+[]
+URL: [http://www.5giay.vn]
+depth [2], firstStop [1], supportJS [0]
+('utils: ', <OadUtils.OadUtils instance at 0x10626cab8>)
+threadName: [thread#1], driver []
+Debug: isOauthUrl url [http://www.5giay.vn]
+Debug: [thread#1] starts [urlopen] for URL [http://www.5giay.vn] with timeout [20] seconds
+[]
+URL: [http://www.92lux.cn]
+depth [2], firstStop [1], supportJS [0]
+('utils: ', <OadUtils.OadUtils instance at 0x10626cab8>)
+threadName: [thread#0], driver []
+Debug: isOauthUrl url [http://www.92lux.cn]
+Debug: [thread#0] starts [urlopen] for URL [http://www.92lux.cn] with timeout [20] seconds
+Error: [thread#0-urlopen] timeout for URL [http://www.92lux.cn]
+Info: [thread#0] index [0] URL [http://www.92lux.cn] done
+Error: [thread#1-urlopen] timed_run timeout for URL [http://www.5giay.vn]
+Info: [thread#1] index [0] URL [http://www.5giay.vn] done
+====================
+Info: dump SumDB
+Info: numOfUrlsInSum [0]
+Info: numOfWebsInSum [0]
+--------------------
+Info: dump SumCoreDB
+Info: numOfUrlsInSumCore [0]
+Info: numOfWebsInSumCore [0]
+====================
+depth [0], numOfUrls [1], numOfJSs [0]
+InitURL [http://www.92lux.cn]
+OAuth URLs:
+[]
+Vulnerable OAuth URLs:
+[]
+--------------------
+depth [0], numOfUrls [1], numOfJSs [0]
+InitURL [http://www.5giay.vn]
+OAuth URLs:
+[]
+Vulnerable OAuth URLs:
+[]
+--------------------
+oad statistics:
+numOfWebs: 2
+numOfUrls: 2
+numofJSs: 0
+numOfOauthUrls: 0
+numOfVulnerableOauthUrls: 0
+numOfVulnerableWebs: 0
+Info: done - core running time [30.010451] seconds
+Daves-MacBook-Pro-2:src daveti$ 
+
